@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.ProductMapper">
+    <select id="selectByCondition" resultType="com.test.entity.Product">
+        SELECT p.*, c.name as category_name FROM product p
+        LEFT JOIN category c ON p.category_id = c.id
+        WHERE p.status = 1
+        <if test="categoryId != null">AND p.category_id = #{categoryId}</if>
+        <if test="keyword != null and keyword != ''">AND p.name LIKE CONCAT('%', #{keyword}, '%')</if>
+        ORDER BY p.id ASC
+    </select>
+
+    <select id="selectAllByCondition" resultType="com.test.entity.Product">
+        SELECT p.*, c.name as category_name FROM product p
+        LEFT JOIN category c ON p.category_id = c.id
+        WHERE 1=1
+        <if test="categoryId != null">AND p.category_id = #{categoryId}</if>
+        <if test="keyword != null and keyword != ''">AND p.name LIKE CONCAT('%', #{keyword}, '%')</if>
+        ORDER BY p.id ASC
+    </select>
+
+    <select id="selectById" resultType="com.test.entity.Product">
+        SELECT p.*, c.name as category_name FROM product p
+        LEFT JOIN category c ON p.category_id = c.id WHERE p.id = #{id}
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO product (name, description, price, stock, image_url, category_id, status)
+        VALUES (#{name}, #{description}, #{price}, #{stock}, #{imageUrl}, #{categoryId}, #{status})
+    </insert>
+
+    <update id="update">
+        UPDATE product SET name=#{name}, description=#{description}, price=#{price},
+        stock=#{stock}, image_url=#{imageUrl}, category_id=#{categoryId}, status=#{status} WHERE id=#{id}
+    </update>
+
+    <delete id="deleteById">
+        DELETE FROM product WHERE id = #{id}
+    </delete>
+
+    <update id="updateStock">
+        UPDATE product SET stock = stock - #{quantity} WHERE id = #{id} AND stock >= #{quantity}
+    </update>
+</mapper>

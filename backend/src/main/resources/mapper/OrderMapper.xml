@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.test.mapper.OrderMapper">
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO `order` (order_no, user_id, total_amount, status, receiver_name, receiver_phone, receiver_address)
+        VALUES (#{orderNo}, #{userId}, #{totalAmount}, #{status}, #{receiverName}, #{receiverPhone}, #{receiverAddress})
+    </insert>
+
+    <select id="selectByUserId" resultType="com.test.entity.Order">
+        SELECT * FROM `order` WHERE user_id = #{userId} ORDER BY id DESC
+    </select>
+
+    <select id="selectAll" resultType="com.test.entity.Order">
+        SELECT * FROM `order` ORDER BY id DESC
+    </select>
+
+    <select id="selectById" resultType="com.test.entity.Order">
+        SELECT * FROM `order` WHERE id = #{id}
+    </select>
+
+    <update id="updateStatus">
+        UPDATE `order` SET status = #{status} WHERE id = #{id}
+    </update>
+
+    <update id="updatePayTime">
+        UPDATE `order` SET pay_time = NOW(), status = 1 WHERE id = #{id}
+    </update>
+
+    <update id="updateShipTime">
+        UPDATE `order` SET ship_time = NOW(), status = 2 WHERE id = #{id}
+    </update>
+
+    <update id="updateCompleteTime">
+        UPDATE `order` SET complete_time = NOW(), status = 3 WHERE id = #{id}
+    </update>
+</mapper>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 定义日志文件的存储位置 -->
+    <property name="LOG_HOME" value="./logs" />
+    <!-- 控制台输出配置 -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <!--%thread:线程名字  %level日志级别 %logger日志记录器的名字{n}最多显示n个字符,处理包名比较长的方案 %msg输出信息内容-->
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{30} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 文件输出配置 -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_HOME}/application.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <!-- 日志文件名格式 %i代表序号 -->
+            <fileNamePattern>${LOG_HOME}/application.%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!-- 最大保留天数 -->
+            <maxHistory>30</maxHistory>
+            <!-- 每个日志文件最大大小 -->
+            <maxFileSize>10MB</maxFileSize>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %logger{30} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 根日志级别设置为 INFO， 改为OFF不输出日志 并添加上面定义的 appender,ALL是全部日志都输出 -->
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
