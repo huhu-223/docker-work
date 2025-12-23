@@ -1,5 +1,5 @@
 # 前端Dockerfile - 多阶段构建 (Alpine版本)
-FROM node:18-alpine AS builder
+FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
 RUN npm install
