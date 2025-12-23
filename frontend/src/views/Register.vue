@@ -45,8 +45,12 @@ const rules = {
 }
 
 const register = async () => {
-  const valid = await formRef.value.validate().catch(() => false)
-  if (!valid) return
+  if (!formRef.value) return
+  try {
+    await formRef.value.validate()
+  } catch (e) {
+    return
+  }
   loading.value = true
   try {
     await api.register(form.value)

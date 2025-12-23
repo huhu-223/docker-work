@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7123c146-1214-4ff4-8837-cf84bdfe2e38" name="Changes" comment="更改数据库配置文件">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/src/main/java/com/test/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/src/main/java/com/test/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/src/views/Register.vue" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/src/views/Register.vue" afterDir="false" />
-    </list>
+    <list default="true" id="7123c146-1214-4ff4-8837-cf84bdfe2e38" name="Changes" comment="修改登录连接" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -86,7 +82,7 @@
       <workItem from="1766491194921" duration="227000" />
       <workItem from="1766491552242" duration="11000" />
       <workItem from="1766491712527" duration="6000" />
-      <workItem from="1766500769232" duration="332000" />
+      <workItem from="1766500769232" duration="700000" />
     </task>
     <task id="LOCAL-00001" summary="改为node20">
       <option name="closed" value="true" />
@@ -112,7 +108,15 @@
       <option name="project" value="LOCAL" />
       <updated>1766497641655</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="修改登录连接">
+      <option name="closed" value="true" />
+      <created>1766501117645</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1766501117645</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -133,6 +137,7 @@
     <MESSAGE value="改为node20" />
     <MESSAGE value="设置数据库连接字符集参数" />
     <MESSAGE value="更改数据库配置文件" />
-    <option name="LAST_COMMIT_MESSAGE" value="更改数据库配置文件" />
+    <MESSAGE value="修改登录连接" />
+    <option name="LAST_COMMIT_MESSAGE" value="修改登录连接" />
   </component>
 </project>
