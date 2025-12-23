@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="7123c146-1214-4ff4-8837-cf84bdfe2e38" name="Changes" comment="">
+    <list default="true" id="7123c146-1214-4ff4-8837-cf84bdfe2e38" name="Changes" comment="改为node20">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" afterPath="$PROJECT_DIR$/docker-compose.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -85,6 +86,15 @@
       <workItem from="1766491552242" duration="11000" />
       <workItem from="1766491712527" duration="6000" />
     </task>
+    <task id="LOCAL-00001" summary="改为node20">
+      <option name="closed" value="true" />
+      <created>1766495291745</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1766495291745</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -100,5 +110,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="改为node20" />
+    <option name="LAST_COMMIT_MESSAGE" value="改为node20" />
   </component>
 </project>
