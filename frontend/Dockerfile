@@ -1,4 +1,4 @@
-# 前端Dockerfile - 多阶段构建 (Alpine版本)
+#前端
 FROM node:20-alpine AS builder
 WORKDIR /app
 COPY package*.json ./
