@@ -84,7 +84,7 @@ public class CartServiceTest {
     @Test
     void testAddItem_ExistingItem() {
         when(cartItemMapper.selectByUserAndProduct(1L, 1L)).thenReturn(testCartItem);
-        doNothing().when(cartItemMapper).updateQuantity(1L, 4);
+        when(cartItemMapper.updateQuantity(1L, 4)).thenReturn(1);
 
         cartService.addItem(1L, 1L, 2);
 
@@ -93,7 +93,7 @@ public class CartServiceTest {
 
     @Test
     void testUpdateQuantity() {
-        doNothing().when(cartItemMapper).updateQuantity(1L, 5);
+        when(cartItemMapper.updateQuantity(1L, 5)).thenReturn(1);
 
         cartService.updateQuantity(1L, 5);
 
@@ -102,7 +102,7 @@ public class CartServiceTest {
 
     @Test
     void testRemoveItem() {
-        doNothing().when(cartItemMapper).deleteById(1L);
+        when(cartItemMapper.deleteById(1L)).thenReturn(1);
 
         cartService.removeItem(1L);
 
@@ -111,7 +111,7 @@ public class CartServiceTest {
 
     @Test
     void testClearCart() {
-        doNothing().when(cartItemMapper).deleteByUserId(1L);
+        when(cartItemMapper.deleteByUserId(1L)).thenReturn(1);
 
         cartService.clearCart(1L);
 

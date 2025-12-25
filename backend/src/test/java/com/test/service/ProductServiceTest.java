@@ -8,8 +8,6 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
-import org.mockito.MockedStatic;
-import org.mockito.Mockito;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
@@ -74,7 +72,7 @@ public class ProductServiceTest {
         Product result = productService.create(newProduct);
 
         assertNotNull(result);
-        assertEquals(Integer.valueOf(1), result.getStatus()); // 默认状态
+        assertEquals(1, result.getStatus().intValue());
         verify(productMapper, times(1)).insert(any(Product.class));
     }
 
@@ -90,7 +88,7 @@ public class ProductServiceTest {
 
     @Test
     void testDeleteProduct() {
-        doNothing().when(productMapper).deleteById(1L);
+        when(productMapper.deleteById(1L)).thenReturn(1);
 
         productService.delete(1L);
 

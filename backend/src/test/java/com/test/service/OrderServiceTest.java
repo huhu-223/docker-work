@@ -34,6 +34,7 @@ public class OrderServiceTest {
     private Product testProduct;
     private Address testAddress;
     private Order testOrder;
+    private OrderItem testOrderItem;
 
     @BeforeEach
     void setUp() {
@@ -65,6 +66,14 @@ public class OrderServiceTest {
         testOrder.setUserId(1L);
         testOrder.setTotalAmount(new BigDecimal("17998.00"));
         testOrder.setStatus(0);
+
+        testOrderItem = new OrderItem();
+        testOrderItem.setId(1L);
+        testOrderItem.setOrderId(1L);
+        testOrderItem.setProductId(1L);
+        testOrderItem.setQuantity(2);
+        testOrderItem.setPrice(new BigDecimal("8999.00"));
+        testOrderItem.setProductName("iPhone 15");
     }
 
     @Test
@@ -75,8 +84,8 @@ public class OrderServiceTest {
         when(productMapper.selectById(1L)).thenReturn(testProduct);
         when(productMapper.updateStock(1L, 2)).thenReturn(1);
         when(orderMapper.insert(any(Order.class))).thenReturn(1);
-        doNothing().when(orderItemMapper).insertBatch(anyList());
-        doNothing().when(cartItemMapper).deleteByUserId(1L);
+        when(orderItemMapper.insertBatch(anyList())).thenReturn(1);
+        when(cartItemMapper.deleteByUserId(1L)).thenReturn(1);
 
         Order result = orderService.createOrder(1L, 1L);
 
@@ -130,7 +139,7 @@ public class OrderServiceTest {
     @Test
     void testGetById_WithItems() {
         when(orderMapper.selectById(1L)).thenReturn(testOrder);
-        List<OrderItem> items = Arrays.asList(new OrderItem());
+        List<OrderItem> items = Arrays.asList(testOrderItem);
         when(orderItemMapper.selectByOrderId(1L)).thenReturn(items);
 
         Order result = orderService.getById(1L);
@@ -143,7 +152,7 @@ public class OrderServiceTest {
     @Test
     void testCancelOrder_Success() {
         when(orderMapper.selectById(1L)).thenReturn(testOrder);
-        List<OrderItem> items = Arrays.asList(new OrderItem());
+        List<OrderItem> items = Arrays.asList(testOrderItem);
         when(orderItemMapper.selectByOrderId(1L)).thenReturn(items);
         when(productMapper.updateStock(anyLong(), anyInt())).thenReturn(1);
         when(orderMapper.updateStatus(1L, 4)).thenReturn(1);
@@ -151,6 +160,7 @@ public class OrderServiceTest {
         orderService.cancel(1L);
 
         verify(orderMapper, times(1)).updateStatus(1L, 4);
+        verify(productMapper, times(1)).updateStock(eq(1L), eq(2));
     }
 
     @Test
