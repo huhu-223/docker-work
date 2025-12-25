@@ -72,7 +72,7 @@ public class OrderServiceTest {
         testOrderItem.setOrderId(1L);
         testOrderItem.setProductId(1L);
         testOrderItem.setQuantity(2);
-        testOrderItem.setPrice(new BigDecimal("8999.00"));
+        testOrderItem.setProductPrice(new BigDecimal("8999.00"));
         testOrderItem.setProductName("iPhone 15");
     }
 
