@@ -160,7 +160,7 @@ public class OrderServiceTest {
         orderService.cancel(1L);
 
         verify(orderMapper, times(1)).updateStatus(1L, 4);
-        verify(productMapper, times(1)).updateStock(eq(1L), eq(2));
+        verify(productMapper, times(1)).updateStock(eq(1L), eq(-2));
     }
 
     @Test
